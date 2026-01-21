@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carril & Asociados | Estudio Jurídico en La Plata</title>
+    <meta name="description" content="Carril & Asociados - Estudio Jurídico en La Plata. Los profesionales siempre al lado tuyo. Derecho Civil, Penal, Laboral, Internacional y más.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #233a42;
+            --color-white: #ffffff;
+            --color-light: #f8f9fa;
+            --color-text: #333333;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.7;
+            color: var(--color-text);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        /* HEADER */
+        header {
+            background: transparent;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background: var(--color-primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 75px 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            position: absolute;
+            left: calc(50% - 400px);
+        }
+
+        .logo img {
+            height: 120px;
+            width: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        header.scrolled .logo img {
+            opacity: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-white);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+            position: relative;
+            width: 22px;
+            height: 18px;
+        }
+
+        .hamburger span {
+            width: 22px;
+            height: 2px;
+            background: var(--color-white);
+            transition: all 0.3s ease;
+            position: absolute;
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 0;
+        }
+
+        .hamburger span:nth-child(2) {
+            top: 8px;
+        }
+
+        .hamburger span:nth-child(3) {
+            top: 16px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            top: 8px;
+            transform: rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            top: 8px;
+            transform: rotate(-45deg);
+        }
+
+        /* HERO INSTITUCIONAL */
+        .hero-institucional {
+            background: var(--color-primary);
+            padding: 166px 60px 115px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-institucional::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+            filter: grayscale(100%);
+            z-index: 0;
+        }
+
+        .hero-institucional::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #233a42;
+            mix-blend-mode: multiply;
+            opacity: 0.95;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .hero-logo {
+            max-width: 280px;
+            width: 100%;
+            margin: 0 auto 40px;
+        }
+
+        .hero-institucional h1 {
+            font-size: 58px;
+            color: var(--color-white);
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 22px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.8;
+            margin-bottom: 50px;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 16px 45px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-light {
+            background: var(--color-white);
+            color: var(--color-primary);
+        }
+
+        .btn-light:hover {
+            background: var(--color-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-white);
+            border: 2px solid var(--color-white);
+        }
+
+        .btn-outline:hover {
+            background: var(--color-white);
+            color: var(--color-primary);
+        }
+
+        /* INTRO SECTION */
+        .intro {
+            padding: 100px 60px;
+            background: var(--color-white);
+        }
+
+        .intro-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .intro-image {
+            position: relative;
+        }
+
+        .intro-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .intro-content h2 {
+            font-size: 48px;
+            color: var(--color-primary);
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .intro-content p {
+            font-size: 17px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .intro-highlight {
+            background: var(--color-light);
+            padding: 30px;
+            margin-top: 30px;
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .intro-highlight p {
+            font-size: 18px;
+            font-style: italic;
+            color: var(--color-primary);
+            margin: 0;
+        }
+
+        /* SERVICES PREVIEW */
+        .services-preview {
+            padding: 100px 60px;
+            background: var(--color-light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-header h2 {
+            font-size: 48px;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+
+        .service-card {
+            background: var(--color-white);
+            padding: 45px 35px;
+            text-align: center;
+            transition: all 0.3s;
+            border-top: 3px solid transparent;
+        }
+
+        .service-card:hover {
+            border-top-color: var(--color-primary);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(35, 58, 66, 0.12);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            color: var(--color-primary);
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* VALORES SECTION */
+        .valores {
+            padding: 100px 60px;
+            background: var(--color-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .valores::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+            filter: grayscale(100%);
+            z-index: 0;
+        }
+
+        .valores::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #233a42;
+            mix-blend-mode: multiply;
+            opacity: 0.95;
+            z-index: 1;
+        }
+
+        .valores-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .valores .section-header h2 {
+            color: var(--color-white);
+        }
+
+        .valores .section-header p {
+            color: rgba(255,255,255,0.85);
+        }
+
+        .valores-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .valor-item {
+            text-align: center;
+            padding: 40px 30px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .valor-item:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-5px);
+        }
+
+        .valor-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.1);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 25px;
+        }
+
+        .valor-item h3 {
+            font-size: 22px;
+            color: var(--color-white);
+            margin-bottom: 15px;
+        }
+
+        .valor-item p {
+            color: rgba(255,255,255,0.8);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            padding: 80px 60px;
+            background: var(--color-white);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 42px;
+            color: var(--color-primary);
+            margin-bottom: 25px;
+        }
+
+        .cta-content p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background: #1a2b32;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(35, 58, 66, 0.3);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--color-primary);
+            color: rgba(255,255,255,0.8);
+            padding: 80px 60px 40px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto 50px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+        }
+
+        .footer-logo img {
+            height: 100px;
+            margin-bottom: 25px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-about p {
+            line-height: 1.8;
+            margin-bottom: 25px;
+            color: rgba(255,255,255,0.7);
+            font-size: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+
+        .social-link:hover {
+            background: var(--color-white);
+            color: var(--color-primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            color: var(--color-white);
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            font-size: 15px;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-white);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+        }
+
+        .footer-bottom a {
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        /* WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            background: #20ba5a;
+            transform: scale(1.1);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            nav {
+                padding: 20px 30px;
+                position: relative;
+                justify-content: center;
+            }
+
+            .logo {
+                position: relative;
+                left: auto;
+                z-index: 1;
+            }
+
+            .logo img {
+                height: 105px;
+                opacity: 0;
+            }
+
+            header.scrolled .logo img {
+                opacity: 1;
+            }
+
+            .hamburger {
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                display: flex;
+                z-index: 1002;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 100%;
+                max-width: 400px;
+                background: var(--color-primary);
+                flex-direction: column;
+                justify-content: center;
+                padding: 40px;
+                transition: right 0.4s;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 18px;
+                color: var(--color-white) !important;
+            }
+
+            .hamburger.active span {
+                background: var(--color-white) !important;
+            }
+
+            .hero-institucional {
+                padding: 64px 30px 60px;
+            }
+
+            .hero-logo {
+                max-width: 220px;
+            }
+
+            .hero-institucional h1 {
+                font-size: 38px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .intro {
+                padding: 80px 30px;
+            }
+
+            .intro-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .intro-image img {
+                height: 350px;
+            }
+
+            .intro-content h2 {
+                font-size: 36px;
+            }
+
+            .services-preview,
+            .valores,
+            .cta-section {
+                padding: 80px 30px;
+            }
+
+            .section-header h2 {
+                font-size: 36px;
+            }
+
+            .services-grid,
+            .valores-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+                justify-content: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .footer-logo {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="./logo.png" alt="Carril & Asociados">
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="estudio.html">El Estudio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO INSTITUCIONAL -->
+    <section class="hero-institucional">
+        <div class="hero-content">
+            <img src="./logo.png" alt="Carril & Asociados" class="hero-logo">
+            <p class="hero-subtitle">Estudio Jurídico en La Plata</p>
+            <p class="hero-description">Los profesionales siempre al lado tuyo. Equipo con alta formación académica y reconocida trayectoria en diferentes especializaciones del derecho.</p>
+            <div class="hero-cta">
+                <a href="contacto.html" class="btn btn-light">
+                    <i class="fas fa-envelope"></i>
+                    Contactanos
+                </a>
+                <a href="servicios.html" class="btn btn-outline">
+                    Nuestros Servicios
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="intro">
+        <div class="intro-container">
+            <div class="intro-image">
+                <img src="https://images.pexels.com/photos/5669619/pexels-photo-5669619.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Estudio Jurídico">
+            </div>
+            <div class="intro-content">
+                <h2>Protegemos tus Derechos, Respaldamos tu Futuro</h2>
+                <p>En nuestro estudio de abogados, ponemos a tu disposición un equipo especializado en diversas áreas del derecho, listo para brindarte la mejor asesoría y representación.</p>
+                <p>Nuestra experiencia nos permite enfrentar con éxito situaciones difíciles y sensibles, con la atención personalizada que mereces.</p>
+                <div class="intro-highlight">
+                    <p>Confiar en nosotros significa estar en manos de profesionales comprometidos con tus intereses y tu tranquilidad.</p>
+                </div>
+                <a href="estudio.html" class="btn btn-primary" style="margin-top: 30px; display: inline-flex;">
+                    <i class="fas fa-users"></i>
+                    Conocé Nuestro Equipo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES PREVIEW -->
+    <section class="services-preview">
+        <div class="section-header">
+            <h2>Áreas de Servicio</h2>
+            <p>Especialistas en múltiples ramas del derecho para brindarte soluciones integrales</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-gavel"></i>
+                </div>
+                <h3>Derecho Penal</h3>
+                <p>Defensa estratégica y protección integral de tu libertad y derechos.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Derecho Laboral</h3>
+                <p>Asesoramiento en despidos, indemnizaciones y derechos del trabajador.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-file-contract"></i>
+                </div>
+                <h3>Derecho Civil</h3>
+                <p>Contratos, accidentes de tránsito, daños y perjuicios.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Derecho de Familia</h3>
+                <p>Divorcios, alimentos, régimen de visitas y más.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Gestión Internacional</h3>
+                <p>Contratos globales, litigios y asesoría en comercio exterior.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h3>Derecho Societario</h3>
+                <p>Asesoramiento empresarial y gestión corporativa eficiente.</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="servicios.html" class="btn btn-primary">
+                <i class="fas fa-arrow-right"></i>
+                Ver Todos los Servicios
+            </a>
+        </div>
+    </section>
+
+    <!-- VALORES -->
+    <section class="valores">
+        <div class="valores-content">
+            <div class="section-header">
+                <h2>Nuestros Valores</h2>
+                <p>Los principios que guían nuestro trabajo diario</p>
+            </div>
+            <div class="valores-grid">
+                <div class="valor-item">
+                    <div class="valor-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Excelencia</h3>
+                    <p>Alta formación académica y reconocida trayectoria profesional.</p>
+                </div>
+
+                <div class="valor-item">
+                    <div class="valor-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Compromiso</h3>
+                    <p>Siempre al lado nuestros clientes en cada etapa del proceso.</p>
+                </div>
+
+                <div class="valor-item">
+                    <div class="valor-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Ética</h3>
+                    <p>Actuamos con integridad y respeto en todas nuestras gestiones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>¿Necesitás Asesoramiento Legal?</h2>
+            <p>Estamos aquí para ayudarte. Contactanos para una consulta y conocé cómo podemos resolver tu situación legal.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/5492215757400?text=Hola, necesito asesoramiento legal" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    Contactar por WhatsApp
+                </a>
+                <a href="contacto.html" class="btn btn-outline" style="border-color: var(--color-primary); color: var(--color-primary);">
+                    Formulario de Contacto
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="./logo.png" alt="Carril & Asociados">
+                </div>
+                <p>Estudio Jurídico con alta formación académica y reconocida trayectoria. Los profesionales siempre al lado tuyo.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/carrilyasoc" target="_blank" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/5492215757400" target="_blank" class="social-link">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="mailto:estudiocarrilasociados@gmail.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="estudio.html">El Estudio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="servicios.html">Derecho Penal</a></li>
+                    <li><a href="servicios.html">Derecho Laboral</a></li>
+                    <li><a href="servicios.html">Derecho Civil</a></li>
+                    <li><a href="servicios.html">Derecho de Familia</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="https://wa.me/5492215757400">+54 221 5757400</a></li>
+                    <li><a href="https://wa.me/5492215667615">+54 221 5667615</a></li>
+                    <li><a href="mailto:estudiocarrilasociados@gmail.com">estudiocarrilasociados@gmail.com</a></li>
+                    <li><a>Diagonal 74, 1280 esquina 45<br>Entrepiso C, La Plata</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Carril & Asociados - Estudio Jurídico - Todos los derechos reservados<br>Desarrollado por <a href="https://www.instagram.com/sageedev/" target="_blank">@sageeDev</a></p>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP -->
+    <a href="https://wa.me/5492215757400?text=Hola, necesito asesoramiento legal" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // MENU TOGGLE
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // HEADER SCROLL
+        const header = document.querySelector('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
